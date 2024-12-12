@@ -1,0 +1,81 @@
+//html
+ <div id="root">
+        <!-- if this already had some tags inside in it , they will be replaced by the parent -->
+    </div>
+    <!-- using html inside div -->
+    <!-- <h1>Hello World!</h1> -->
+
+    <!-- using JS -->
+    <!-- <script>
+    const heading = document.createElement("h1");
+    heading.innerHTML = "Hello World using JS!";
+    const root = document.getElementById("root");
+    root.appendChild(heading);
+    </script> -->
+
+    <!-- using React -->
+     <!-- core of react -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- react lib for modification of DOM -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- this shoul dbe after incorporating React script only ,order is always in sequence -->
+    <script src="./App.js"> 
+    </script>
+
+//app.js
+
+// (tag,attributes to the tag,content of tag)
+// const heading = React.createElement(
+//   "h1",
+//   //   props - children or attributes passed
+//   { id: "heading", xyz: "abc" },
+//   "Hello World from React"
+// );
+// // heading is an object
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// // take this obbject, create the tag and pass it in the form that browser understands
+// root.render(heading);
+
+/*
+    // for crating nested divs in react
+
+    <div id="parent">
+    <div id="child">
+        <h1>I am H1 tag</h1>
+        <h2>I am H2 tag</h2>
+    </div>
+    <div id="child">
+        <h1>I am H1 tag</h1>
+        <h2>I am H2 tag</h2>
+    </div>
+    </div>;
+
+*/
+const parent = React.createElement("div", { id: "parent" }, [
+  React.createElement(
+    "div",
+    { id: "child" },
+    // React.createElement("h1", {}, "I am H1 tag")
+    // for siblings
+    [
+      React.createElement("h1", {}, "I am H1 tag"),
+      React.createElement("h2", {}, "I am H2 tag"),
+    ]
+  ),
+  React.createElement(
+    "div",
+    { id: "child" },
+    // React.createElement("h1", {}, "I am H1 tag")
+    // for siblings
+    [
+      React.createElement("h1", {}, "I am H1 tag"),
+      React.createElement("h2", {}, "I am H2 tag"),
+    ]
+  ),
+]);
+
+//to make it more readable we make JSX
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// render the parent inside the root
+root.render(parent);
