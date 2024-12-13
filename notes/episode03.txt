@@ -1,0 +1,15 @@
+
+//React Element- react, after rendering elemnet onto the DOM - HTML element
+const heading = React.createElement("h1", { id: "heading" }, "Malvika Recat");
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
+//JSX -----BABEL(JS compiler)-------> createElement(object)->react element(JS Object)->HTML element(render)
+const JSXheading = <h1>Malvika React using JSX</h1>;
+const root1 = ReactDOM.createRoot(document.getElementById("root"));
+root1.render(JSXheading);
+
+//for multiple elements
+const JSXheading =
+  ((<h1>Malvika React using JSX</h1>), (<h1>Malvika React using JSX</h1>));
+
