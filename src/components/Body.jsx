@@ -1,14 +1,17 @@
 import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { swiggyApi } from "../utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/UserContext";
 
 const Body = () => {
   const [listOfRes, setListOfRes] = useState([]);
   const [filteredlistOfRes, filteredSetListOfRes] = useState([]);
   const [search, setSearch] = useState("");
+
+  const { setUserName, loggedInUser } = useContext(userContext);
 
   useEffect(() => {
     fetchData();
@@ -86,6 +89,17 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+
+        <div>
+          <label>UserName:</label>
+          <input
+            className="border border-black"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          ></input>
         </div>
       </div>
       <div class="flex flex-wrap justify-between m-4 ">

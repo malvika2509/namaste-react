@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import userContext from "../utils/UserContext";
 
 function About() {
+  const { loggedInUser } = useContext(userContext);
   return (
     <div>
-      <h1>About</h1>
+      <h1>About : {loggedInUser}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias
         corrupti, numquam saepe ullam magni eaque quibusdam minima obcaecati

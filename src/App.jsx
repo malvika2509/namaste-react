@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,7 +7,10 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
-// e do not use this imoort for lazy loading
+import userContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+// we do not use this imoort for lazy loading
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -17,11 +20,24 @@ function Error404() {
 }
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  // authentication code written for eg
+
+  useEffect(() => {
+    const data = { name: "Malvika Madan" };
+
+    setUserName(data.name);
+  }, []);
   return (
-    <div class="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <userContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div class="app">
+          <Header />
+          <Outlet />
+        </div>
+      </userContext.Provider>
+    </Provider>
   );
 };
 

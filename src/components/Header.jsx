@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../images/logo.png";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [btnName, setBtnName] = useState("LogIn");
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser } = useContext(userContext);
+
+  // subscribing to the store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="bg-white shadow-md">
@@ -27,6 +34,7 @@ function Header() {
               {onlineStatus ? "Online" : "Offline"}
             </span>
           </li>
+
           <Link to="/" className="hover:text-orange-500">
             Home
           </Link>
@@ -42,7 +50,7 @@ function Header() {
           <Link to="/cart" className="hover:text-orange-500 flex items-center">
             Cart
             <span className="ml-1 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-              1
+              {cartItems.length}
             </span>
           </Link>
         </nav>
@@ -57,6 +65,10 @@ function Header() {
           >
             {btnName}
           </button>
+        </div>
+
+        <div className="hover:text-orange-500 flex items-center">
+          User : {loggedInUser}
         </div>
       </div>
     </div>

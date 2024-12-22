@@ -85,3 +85,12 @@ Context
 
 - to keep a variable global so that anyone can access it
 - solves the problem of props drilling -
+
+<!-- redux toolkit -->
+
+- install @reduxjs/toolkit and react-redux
+- Build our store
+- connect our store to our app
+- slice (Cart Slice)
+- dispatch(action)
+- selector
