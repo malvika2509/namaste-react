@@ -1,0 +1,21 @@
+//types of exports/imports
+
+-Default Export/Import
+
+export default Component
+import Component from path
+
+-Named Export/Import
+
+export const Component
+import {Component} from path
+-------------------------------------------------------
+//default+named export in 1 file- YES
+// myModule.js
+const defaultExport = "I am the default export";
+
+export const namedExport1 = "I am named export 1";
+export const namedExport2 = "I am named export 2";
+
+export default defaultExport;  // Default export
+

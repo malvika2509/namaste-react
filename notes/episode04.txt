@@ -1,0 +1,124 @@
+Here are simple answers to your React-related questions:
+
+---
+
+### **1. Is JSX mandatory for React?**
+No, JSX is not mandatory for React, but it is highly recommended because it makes the code more readable and easier to write. Without JSX, you would need to use `React.createElement()` to create components, which can get verbose.
+
+---
+
+### **2. Is ES6 mandatory for React?**
+No, ES6 is not mandatory for React. However, many React features (like `class` components, arrow functions, destructuring, and modules) are easier to work with using ES6. Modern React code typically relies on ES6+ features for cleaner and more concise syntax.
+
+---
+
+### **3. {TitleComponent} vs {<TitleComponent />} vs {<TitleComponent></TitleComponent>} in JSX**
+- **`{TitleComponent}`**: Refers to the component itself, often used when passing it as a prop (e.g., `<OtherComponent child={TitleComponent} />`).
+- **`{<TitleComponent />}`**: Instantiates the component and renders it as JSX.
+- **`{<TitleComponent></TitleComponent>}`**: Similar to `<TitleComponent />` but is used when you need to wrap child elements or pass content between the tags.
+
+---
+
+### **4. How can I write comments in JSX?**
+You can write comments in JSX like this:
+```jsx
+{/* This is a comment */}
+```
+For example:
+```jsx
+return (
+  <div>
+    {/* This is a comment */}
+    <p>Hello, World!</p>
+  </div>
+);
+```
+
+---
+
+### **5. What is `<React.Fragment></React.Fragment>` and `<></>`?**
+- **`<React.Fragment>`**: A wrapper that allows grouping multiple elements without adding extra nodes to the DOM.
+- **`<>` (short syntax)**: A shorthand for `<React.Fragment>`. Both are used to avoid unnecessary `<div>` wrappers.
+  
+Example:
+```jsx
+<React.Fragment>
+  <h1>Title</h1>
+  <p>Content</p>
+</React.Fragment>
+
+// Or using shorthand:
+<>
+  <h1>Title</h1>
+  <p>Content</p>
+</>
+```
+
+---
+
+### **6. What is Virtual DOM?**
+The Virtual DOM is a lightweight, in-memory representation of the real DOM. React uses it to track changes and update the real DOM efficiently. It compares the old and new virtual DOMs, calculates the differences, and applies only the necessary changes to the real DOM.
+
+---
+
+### **7. What is Reconciliation in React?**
+Reconciliation is the process by which React updates the DOM. React compares the new Virtual DOM with the previous one (diffing) to determine what has changed and updates only the changed parts in the real DOM, ensuring better performance.
+
+---
+
+### **8. What is React Fiber?**
+React Fiber is React's underlying rendering engine. It improves React's ability to handle animations, prioritizes updates, and provides a smoother user experience by breaking rendering into smaller units of work and executing them incrementally.
+
+---
+
+### **9. Why do we need keys in React? When do we need keys in React?**
+Keys are needed in React to help identify which items have changed, been added, or removed in a list. They improve performance by enabling React to avoid unnecessary re-renders.
+
+Use keys when rendering lists:
+```jsx
+{items.map((item) => (
+  <li key={item.id}>{item.name}</li>
+))}
+```
+
+---
+
+### **10. Can we use index as keys in React?**
+Yes, but only in cases where the list is static or does not change. Using indexes as keys in dynamic lists can lead to bugs because React relies on keys for efficient updates.
+
+---
+
+### **11. What is `props` in React?**
+Props (short for "properties") are read-only inputs passed from a parent to a child component to customize its behavior or display.
+
+Example:
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+<Welcome name="Malvika" />
+```
+
+---
+
+### **12. What is a Config Driven UI?**
+A **Config Driven UI** is a design pattern where the UI is dynamically rendered based on a configuration (typically JSON). Instead of hardcoding components, you define a configuration that determines the structure, content, and behavior.
+
+Example:
+```jsx
+const config = [
+  { type: 'button', text: 'Submit' },
+  { type: 'input', placeholder: 'Enter name' },
+];
+
+// Render dynamically based on config:
+config.map((item) => {
+  if (item.type === 'button') return <button>{item.text}</button>;
+  if (item.type === 'input') return <input placeholder={item.placeholder} />;
+});
+```
+
+---
+
+Let me know if you want a deeper explanation for any topic! 😊
