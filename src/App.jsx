@@ -10,6 +10,7 @@ import Shimmer from "./components/Shimmer";
 import userContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // we do not use this imoort for lazy loading
 // import Grocery from "./components/Grocery";
 
@@ -59,6 +60,7 @@ ReactDOM.createRoot(root).render(
           }
         />
         <Route path="/restaurant/:resId" element={<RestaurantMenu />} />
+        <Route path="cart" element={<Cart />} />
       </Route>
       <Route path="*" element={<Error404 />} />
     </Routes>
